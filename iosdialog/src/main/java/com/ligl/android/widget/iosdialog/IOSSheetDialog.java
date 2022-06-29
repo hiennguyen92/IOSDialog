@@ -32,6 +32,7 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
         private IOSSheetDialog mIosSheetDialog;
         private Context mContext;
         private CharSequence mTitle;
+        private CharSequence mMessage;
         private CharSequence mCancelText;
         private SheetItem[] mItems;
         private OnClickListener mOnClickListener;
@@ -49,6 +50,16 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
         
         public Builder setTitle(int titleId) {
             this.mTitle = mContext.getText(titleId);
+            return this;
+        }
+        
+        public Builder setMessage(CharSequence message) {
+            this.mMessage = message;
+            return this;
+        }
+        
+        public Builder setMessage(int messageId) {
+            this.mMessage = mContext.getText(messageId);
             return this;
         }
         
@@ -87,6 +98,7 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
             mIosSheetDialog = new IOSSheetDialog(mContext);
             
             TextView tvTitle = (TextView) sheetView.findViewById(R.id.title);
+            TextView tvMessage = (TextView) sheetView.findViewById(R.id.message);
             LinearLayout message_layout = (LinearLayout) sheetView.findViewById(R.id.message_layout);
             Button btn_cancel = (Button) sheetView.findViewById(R.id.btn_cancel);
             
@@ -96,6 +108,11 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
                 tvTitle.setVisibility(View.GONE);
             } else {
                 tvTitle.setText(mTitle);
+            }
+            if(TextUtils.isEmpty(mMessage)) {
+                tvMessage.setVisibility(View.GONE);
+            } else {
+                tvMessage.setText(mMessage);
             }
             // 填充列表内容
             for (int i = 0, len = mItems.length; i < len; i++) {
