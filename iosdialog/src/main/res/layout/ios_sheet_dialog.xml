@@ -20,7 +20,7 @@
         android:id="@+id/message"
         android:layout_width="match_parent"
         android:layout_height="43dp"
-        android:background="@drawable/iossheet_top_btn_normal"
+        android:background="@drawable/iossheet_middle_btn_normal"
         android:gravity="center"
         android:textColor="@color/ios_grey"
         android:textSize="13sp" />
