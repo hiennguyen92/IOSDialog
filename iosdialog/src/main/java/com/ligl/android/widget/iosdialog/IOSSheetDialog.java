@@ -169,16 +169,18 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
             window.setWindowAnimations(R.style.ios_sheet_anim);
             window.setBackgroundDrawableResource(android.R.color.transparent);
             WindowManager.LayoutParams wml = window.getAttributes();
-            wml.width = metrics.widthPixels;
+            
             if(mIsCenter) {
                 wml.gravity = Gravity.CENTER;
                 btn_cancel.setVisibility(View.GONE);
             }else {
                 wml.gravity = Gravity.BOTTOM;
+                wml.width = metrics.widthPixels;
+                sheetView.setMinimumWidth(metrics.widthPixels);
             }
             wml.y = 0;
             window.setAttributes(wml);
-            sheetView.setMinimumWidth(metrics.widthPixels);
+            
             
             // 设置dialog的高度不能超过屏幕的0.7
             LayoutParams vgl = new LayoutParams(
