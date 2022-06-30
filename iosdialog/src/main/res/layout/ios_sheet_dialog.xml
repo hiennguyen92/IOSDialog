@@ -11,7 +11,7 @@
         android:layout_height="43dp"
         android:background="@drawable/iossheet_top_btn_normal"
         android:gravity="center"
-        android:textColor="@color/ios_grey"
+        android:textColor="#000000"
         android:singleLine="true"
         android:textSize="15sp"
         android:textStyle="bold" />
@@ -23,8 +23,8 @@
         android:background="@drawable/iossheet_middle_btn_normal"
         android:gravity="center"
         android:paddingVertical="10dp"
-        android:paddingHorizontal="5dp"
-        android:textColor="@color/ios_grey"
+        android:paddingHorizontal="10dp"
+        android:textColor="#000000"
         android:textSize="13sp" />
     
     <LinearLayout
