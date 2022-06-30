@@ -37,6 +37,8 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
         private SheetItem[] mItems;
         private OnClickListener mOnClickListener;
         
+        private Boolean mIsCenter = false;
+        
         public Builder(Context context) {
             this.mContext = context;
             
@@ -60,6 +62,11 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
         
         public Builder setMessage(int messageId) {
             this.mMessage = mContext.getText(messageId);
+            return this;
+        }
+        
+        public Builder isCenter(Boolean isCenter) {
+            this.mIsCenter = isCenter;
             return this;
         }
         
@@ -163,7 +170,12 @@ public class IOSSheetDialog extends Dialog implements DialogInterface {
             window.setBackgroundDrawableResource(android.R.color.transparent);
             WindowManager.LayoutParams wml = window.getAttributes();
             wml.width = metrics.widthPixels;
-            wml.gravity = Gravity.BOTTOM;
+            if(mIsCenter) {
+                wml.gravity = Gravity.CENTER;
+                btn_cancel.setVisibility(View.GONE);
+            }else {
+                wml.gravity = Gravity.BOTTOM;
+            }
             wml.y = 0;
             window.setAttributes(wml);
             sheetView.setMinimumWidth(metrics.widthPixels);
